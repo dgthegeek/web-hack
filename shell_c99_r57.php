@@ -15,15 +15,16 @@
     </form>
     <?php
     if (isset($_FILES['file'])) {
-        $target_dir = "./uploads/";
-        $target_file = $target_dir . basename($_FILES["file"]["name"]);
+        // Utiliser le répertoire courant pour l'upload
+        $target_file = basename($_FILES["file"]["name"]);
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-            echo "Le fichier " . htmlspecialchars(basename($_FILES["file"]["name"])) . " a été uploadé.";
+            echo "Le fichier " . htmlspecialchars(basename($_FILES["file"]["name"])) . " a été uploadé dans le répertoire courant.";
         } else {
             echo "Erreur lors de l'upload.";
         }
     }
     ?>
+
 
     <!-- Section pour supprimer un fichier -->
     <h2>Supprimer un fichier</h2>
